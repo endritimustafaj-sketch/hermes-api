@@ -1,0 +1,25 @@
+# Render Blueprint për Hermes Marketplace API
+# Dokumentacioni: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: hermes-api
+    runtime: python
+    region: frankfurt  # më afër Shqipërisë sesa Oregon/Virginia
+    plan: free
+    branch: main
+
+    # Instalon varësitë DHE krijon DB me të dhëna seed
+    buildCommand: pip install -r requirements.txt && python init_db.py
+
+    # Nis serverin (Render cakton $PORT dinamikisht)
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+
+    # Health check për Render
+    healthCheckPath: /health
+
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.7"
+      - key: DEBUG
+        value: "false"
