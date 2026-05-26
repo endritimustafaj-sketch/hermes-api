@@ -129,3 +129,7 @@ app.include_router(webservice_publik.router, prefix=settings.API_V1_PREFIX)
 # Hapi 11 (regjistrim blerësish/shitësish): from routers import llogarite_router
 # Hapi 12 (CRUD listimet): from routers import listimet_router
 # Hapi 13 (faturat me persistim): from routers import faturat_router
+
+@app.api_route("/health", methods=["GET", "HEAD"], tags=["Sistemi"])
+def shendeti():
+    return {"status": "ok"}
