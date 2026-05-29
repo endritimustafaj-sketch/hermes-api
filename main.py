@@ -48,6 +48,8 @@ app = FastAPI(
     lifespan=lifespan,
     docs_url="/docs",
     redoc_url="/redoc",
+    # Fsheh seksionin "Schemas" nga Swagger UI (më pak konfuzion për përdoruesin)
+    swagger_ui_parameters={"defaultModelsExpandDepth": -1},
 )
 
 
@@ -129,7 +131,3 @@ app.include_router(webservice_publik.router, prefix=settings.API_V1_PREFIX)
 # Hapi 11 (regjistrim blerësish/shitësish): from routers import llogarite_router
 # Hapi 12 (CRUD listimet): from routers import listimet_router
 # Hapi 13 (faturat me persistim): from routers import faturat_router
-
-@app.api_route("/health", methods=["GET", "HEAD"], tags=["Sistemi"])
-def shendeti():
-    return {"status": "ok"}
