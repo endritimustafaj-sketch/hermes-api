@@ -30,7 +30,7 @@ router = APIRouter(prefix="/public", tags=["Webservice Publik"])
 @router.post(
     "/llogarit-fature",
     response_model=LlogaritFatureResponse,
-    summary="Llogarit faturën komplete (pa e ruajtur)",
+    summary="Llogarit faturën total",
     description=(
         "Endpoint-i kryesor i webservice-it. Llogarit **faturën e plotë** "
         "pa e ruajtur në DB — i përdorshëm për:\n\n"
@@ -64,7 +64,7 @@ def llogarit_fature_endpoint(
 @router.get(
     "/kerko-pjese",
     response_model=KerkimPjeseResponse,
-    summary="Kërkim pjesësh me tekst të lirë",
+    summary="Kërkim i plotë produktesh",
     description=(
         "Kërkim inteligjent me tekst të lirë në katalog.\n\n"
         "**Veçoritë:**\n"
@@ -105,7 +105,7 @@ def kerko_pjese(
 @router.get(
     "/oferta-pjeses/{kodi_oem}",
     response_model=OfertePjeseResponse,
-    summary="Lista e ofertave për një pjesë",
+    summary="Kërkim me kod OEM",
     description=(
         "Kthen të gjitha ofertat aktive nga shitësit për një pjesë të "
         "identifikuar me kodin OEM (p.sh. `BOSCH-0986452060`).\n\n"
@@ -126,7 +126,7 @@ def oferta_pjeses(
 @router.post(
     "/kosto-transporti",
     response_model=KostoTransportiResponse,
-    summary="Llogarit kostonë e transportit",
+    summary="Llogarit koston e transportit",
     description=(
         "Llogarit kostonë e dorëzimit nga magazina e Hermes te adresa e blerësit. "
         "Përdor formulën:\n\n"
