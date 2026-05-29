@@ -15,12 +15,10 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     # ---------- Aplikacioni ----------
-    APP_NAME: str = "Hermes Marketplace API"
+    APP_NAME: str = "Hermes"
     APP_VERSION: str = "0.9.1"
     APP_DESCRIPTION: str = (
         "Hermes — Marketplace për pjesë këmbimi makinash. "
-        "Webservice që lidh shitësit me blerësit dhe automatizon transportin. "
-        "Pjesë e Detyrës së Kursit AIS 2026."
     )
     DEBUG: bool = True
 
